@@ -1,8 +1,4 @@
-package com.mostafayehya.domain;
-
-import lombok.*;
-
-import javax.persistence.*;
+package com.mostafayehya.restfulvetclinicsystem.domain;
 
 /*@Setter
 @Getter

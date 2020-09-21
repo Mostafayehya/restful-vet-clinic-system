@@ -1,9 +1,9 @@
-package com.mostafayehya.services;
+package com.mostafayehya.restfulvetclinicsystem.services;
 
-import com.mostafayehya.api.dto.PetDTO;
-import com.mostafayehya.api.mapper.PetMapper;
-import com.mostafayehya.domain.Pet;
-import com.mostafayehya.repositories.PetRepository;
+import com.mostafayehya.restfulvetclinicsystem.api.dto.PetDTO;
+import com.mostafayehya.restfulvetclinicsystem.api.mapper.PetMapper;
+import com.mostafayehya.restfulvetclinicsystem.domain.Pet;
+import com.mostafayehya.restfulvetclinicsystem.repositories.PetRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +21,7 @@ public class PetServiceImpl implements PetService {
     public PetDTO createNewPet(PetDTO petDTO) {
         Pet pet = petMapper.PetDTOtoPet(petDTO);
         PetDTO savedPetDTO = petMapper.petToPetDTO(petRepository.save(pet));
-        return petDTO;
+        return savedPetDTO;
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.mostafayehya.repositories;
+package com.mostafayehya.restfulvetclinicsystem.repositories;
 
-import com.mostafayehya.domain.Pet;
+import com.mostafayehya.restfulvetclinicsystem.domain.Pet;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

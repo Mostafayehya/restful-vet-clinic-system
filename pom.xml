@@ -52,7 +52,13 @@
         <dependency>
             <!-- this may cause a problem as it should be mapstruct-jdk8-->
             <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.2.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
             <version>1.2.0.Final</version>
         </dependency>
         <dependency>
@@ -98,6 +104,11 @@
                         <!-- other annotation processors -->
                     </annotationProcessorPaths>
                     <!-- there are some missing tags here that would produce a potential problem, review guru mapstruct video-->
+                    <compilerArgs>
+                        <compilerArg>
+                            -Amapstruct.defaultComponentModel=spring
+                        </compilerArg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

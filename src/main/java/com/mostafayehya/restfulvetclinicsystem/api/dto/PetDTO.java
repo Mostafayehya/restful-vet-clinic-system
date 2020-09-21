@@ -1,4 +1,4 @@
-package com.mostafayehya.api.dto;
+package com.mostafayehya.restfulvetclinicsystem.api.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
