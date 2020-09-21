@@ -32,7 +32,7 @@ public class Pet {
 
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
     @Column(name = "photo_url")
-    private String photo_url;
+    private String photoUrl;
 
     @Column(name = "weight")
     String weight;
