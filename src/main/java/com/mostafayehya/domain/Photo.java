@@ -4,15 +4,15 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Setter
+/*@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "photos")
+@Table(name = "photos")*/
 public class Photo {
-
+/*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -22,5 +22,5 @@ public class Photo {
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
-    Pet pet;
+    Pet pet;*/
 }

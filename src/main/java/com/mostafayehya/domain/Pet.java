@@ -30,8 +30,9 @@ public class Pet {
     @Column(name = "animal_kind")
     private String animalKind;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
-    private List<Photo> photos = new ArrayList<>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    @Column(name = "photo_url")
+    private String photo_url;
 
     @Column(name = "weight")
     String weight;
