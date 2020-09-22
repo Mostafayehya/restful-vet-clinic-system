@@ -29,8 +29,9 @@ public class Doctor {
     @Column(name = "bio")
     private String bio;
 
-    @OneToOne(mappedBy = "doctor")
-    private Clinic clinic;
+    @ManyToOne
+    @JoinColumn(name = "clinic_id")
+    Clinic clinic;
 
 
 }

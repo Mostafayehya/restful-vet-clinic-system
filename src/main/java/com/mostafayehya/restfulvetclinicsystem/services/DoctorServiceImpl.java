@@ -25,10 +25,15 @@ public class DoctorServiceImpl implements DoctorService {
         this.doctorMapper = doctorMapper;
     }
 
-
+    @Override
+    public DoctorDTO createNewDoctor(DoctorDTO doctorDTO) {
+        Doctor doctor = doctorMapper.doctorDTOtoDoctor(doctorDTO);
+        DoctorDTO savedDoctorDTO = doctorMapper.doctorToDoctorDTO(doctorRepository.save(doctor));
+        return savedDoctorDTO;
+    }
 
     @Override
-    public DoctorDTO createNewDoctor(Long clinicId, DoctorDTO doctorDTO) {
+    public DoctorDTO assignDoctorToClinic(Long clinicId, DoctorDTO doctorDTO) {
 
         Optional<Clinic> optionalClinic = clinicRepository.findById(clinicId);
 
@@ -43,11 +48,21 @@ public class DoctorServiceImpl implements DoctorService {
 
         Doctor convertedDoctor = doctorMapper.doctorDTOtoDoctor(doctorDTO);
 
-//        convertedDoctor.setClinic(clinic);
-        clinic.setDoctor(convertedDoctor);
+        clinic.addDoctor(convertedDoctor);
 
         Clinic savedClinic = clinicRepository.save(clinic);
-        return doctorMapper.doctorToDoctorDTO(savedClinic.getDoctor());
+
+        Optional<Doctor> savedDoctor = savedClinic.getDoctors().stream()
+                .filter(doctor -> doctor.getName().equals(doctorDTO.getName()))
+                .filter(doctor -> doctor.getPhone().equals(doctorDTO.getPhone()))
+                .findFirst();
+
+        if (!savedDoctor.isPresent()) {
+            log.error("Coulnd't save doctor !!");
+            return new DoctorDTO();
+        }
+
+        return doctorMapper.doctorToDoctorDTO(savedDoctor.get());
     }
 
     @Override

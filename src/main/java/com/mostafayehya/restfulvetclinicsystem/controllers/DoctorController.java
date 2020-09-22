@@ -14,15 +14,21 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("/api/clinics/{clinicId}/doctors")
+    @PostMapping("/api/doctors")
     @ResponseStatus(HttpStatus.CREATED)
-    public DoctorDTO addDoctor(@PathVariable Long clinicId, @RequestBody DoctorDTO doctorDTO) {
-        return doctorService.createNewDoctor(clinicId, doctorDTO);
+    public DoctorDTO createDoctor(@RequestBody DoctorDTO doctorDTO) {
+        return doctorService.createNewDoctor(doctorDTO);
+    }
+
+    @PostMapping("/api/clinics/{clinicId}/assign")
+    @ResponseStatus(HttpStatus.CREATED)
+    public DoctorDTO assignDoctorToClinic(@PathVariable Long clinicId, @RequestBody DoctorDTO doctorDTO) {
+        return doctorService.assignDoctorToClinic(clinicId, doctorDTO);
     }
 
     @GetMapping("/api/doctors/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public DoctorDTO getDoctor(@PathVariable Long id){
+    public DoctorDTO getDoctor(@PathVariable Long id) {
         return doctorService.getDoctorById(id);
     }
 }

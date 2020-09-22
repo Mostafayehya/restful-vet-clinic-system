@@ -3,6 +3,8 @@ package com.mostafayehya.restfulvetclinicsystem.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -35,12 +37,13 @@ public class Clinic {
     @Column(name = "social_networks")
     private String urls; // Possible URL entity
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinic")
+    Set<Doctor> doctors = new HashSet<>();
 
-    public void setDoctor(Doctor doctor) {
-       // doctor.setClinic(this);
-        this.doctor = doctor;
+    public Clinic addDoctor(Doctor doc) {
+        doc.setClinic(this);
+        this.doctors.add(doc);
+        return this;
     }
+
 }
