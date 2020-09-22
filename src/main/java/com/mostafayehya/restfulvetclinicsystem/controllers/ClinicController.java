@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/clinics")
 public class ClinicController {
 
     private final ClinicService clinicService;
@@ -15,13 +14,13 @@ public class ClinicController {
         this.clinicService = clinicService;
     }
 
-    @PostMapping
+    @PostMapping("/api/clinics")
     @ResponseStatus(HttpStatus.CREATED)
     public ClinicDTO addClinic(@RequestBody ClinicDTO clinicDTO) {
         return clinicService.createNewClinic(clinicDTO);
     }
 
-    @GetMapping({"/{id}"})
+    @GetMapping({"/api/clinics/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public ClinicDTO getClinicById(@PathVariable Long id) {
         return clinicService.getClinicById(id);

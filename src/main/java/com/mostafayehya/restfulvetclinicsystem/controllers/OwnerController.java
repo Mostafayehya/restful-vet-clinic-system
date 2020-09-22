@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/owners")
 public class OwnerController {
 
     private final OwnerService ownerService;
@@ -14,13 +13,13 @@ public class OwnerController {
         this.ownerService = ownerService;
     }
 
-    @PostMapping
+    @PostMapping("/api/owners")
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO addOwner(@RequestBody OwnerDTO ownerDTO) {
         return ownerService.createNewOwner(ownerDTO);
     }
 
-    @GetMapping({"/{id}"})
+    @GetMapping({"/api/owners/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public OwnerDTO getOwnerById(@PathVariable Long id) {
         return ownerService.getOwnerById(id);
