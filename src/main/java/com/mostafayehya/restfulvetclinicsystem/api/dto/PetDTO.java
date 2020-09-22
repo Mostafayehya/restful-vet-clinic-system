@@ -27,4 +27,8 @@ public class PetDTO {
 
     private String weight;
 
+    private Long ownerId;
+
+
+
 }

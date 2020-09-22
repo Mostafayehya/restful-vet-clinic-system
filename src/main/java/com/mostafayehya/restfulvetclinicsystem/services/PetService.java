@@ -4,7 +4,7 @@ import com.mostafayehya.restfulvetclinicsystem.api.dto.PetDTO;
 
 public interface PetService {
 
-    PetDTO createNewPet(PetDTO petDTO);
+    PetDTO createNewPet(Long ownerId,PetDTO petDTO);
 
     PetDTO getPetById(Long id);
 

@@ -37,6 +37,13 @@ public class Owner {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     Set<Pet> petList = new HashSet<>();
+
+    // To Bind each pet to a specic owner
+    public Owner addPet(Pet convertedPet) {
+        convertedPet.setOwner(this);
+        this.petList.add(convertedPet);
+        return this;
+    }
 }
