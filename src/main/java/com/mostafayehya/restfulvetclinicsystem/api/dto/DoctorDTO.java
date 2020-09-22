@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DoctorDTO {
 
+    private Long id;
     private String name;
     private String phone;
 

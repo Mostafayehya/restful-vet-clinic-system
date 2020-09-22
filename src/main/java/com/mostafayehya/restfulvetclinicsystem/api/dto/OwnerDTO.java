@@ -16,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class OwnerDTO {
 
+    private Long id;
     private String name;
     private String gender;
     private String email;

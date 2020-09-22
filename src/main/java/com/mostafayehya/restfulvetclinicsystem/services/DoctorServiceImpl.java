@@ -37,8 +37,6 @@ public class DoctorServiceImpl implements DoctorService {
 
         Optional<Clinic> optionalClinic = clinicRepository.findById(clinicId);
 
-        // Todo very basic error handling, can be improved by throwing a global exception and intercepting it using
-        // Aspects
         if (!optionalClinic.isPresent()) {
             log.error("Clinic is not found for id " + clinicId);
             return new DoctorDTO();

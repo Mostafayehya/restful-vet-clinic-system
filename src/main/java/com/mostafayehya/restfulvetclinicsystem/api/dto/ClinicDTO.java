@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ClinicDTO {
 
+    private Long id;
     private String name;
     private String address;
     private String phone;
