@@ -35,5 +35,9 @@ public class Pet {
     @Column(name = "weight")
     String weight;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    Owner owner;
+
 
 }

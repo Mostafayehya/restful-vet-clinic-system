@@ -9,28 +9,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/pets")
 public class PetController {
 
     private final PetService petService;
-    Logger logger = LoggerFactory.getLogger(PetController.class);
-
-
     public PetController(PetService petService) {
         this.petService = petService;
     }
 
     @PostMapping
-    public ResponseEntity<PetDTO> addPet(@RequestBody PetDTO petDTO) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public PetDTO addPet(@RequestBody PetDTO petDTO) {
 
-        logger.debug("============================ addPet was called  =============================");
-        return new ResponseEntity<>(petService.createNewPet(petDTO), HttpStatus.CREATED);
+        return  petService.createNewPet(petDTO);
     }
 
     @GetMapping({"/{id}"})
-    public ResponseEntity<PetDTO> getPetById(@PathVariable Long id) {
-        logger.debug("============================ getPetById was called=============================");
-        return new ResponseEntity<>(petService.getPetById(id), HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public PetDTO getPetById(@PathVariable Long id) {
+        return petService.getPetById(id);
     }
 }
