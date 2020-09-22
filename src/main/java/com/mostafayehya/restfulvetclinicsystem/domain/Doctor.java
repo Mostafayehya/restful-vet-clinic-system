@@ -29,7 +29,7 @@ public class Doctor {
     @Column(name = "bio")
     private String bio;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clinic_id")
     Clinic clinic;
 

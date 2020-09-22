@@ -1,9 +1,12 @@
 package com.mostafayehya.restfulvetclinicsystem.controllers;
 
 import com.mostafayehya.restfulvetclinicsystem.api.dto.ClinicDTO;
+import com.mostafayehya.restfulvetclinicsystem.api.dto.DoctorDTO;
 import com.mostafayehya.restfulvetclinicsystem.services.ClinicService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ClinicController {
@@ -18,6 +21,12 @@ public class ClinicController {
     @ResponseStatus(HttpStatus.CREATED)
     public ClinicDTO addClinic(@RequestBody ClinicDTO clinicDTO) {
         return clinicService.createNewClinic(clinicDTO);
+    }
+
+    @GetMapping("/api/clinics/{clinicId}/doctors")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DoctorDTO> getDoctors(@PathVariable Long clinicId) {
+        return clinicService.getAllDoctors(clinicId);
     }
 
     @GetMapping({"/api/clinics/{id}"})
