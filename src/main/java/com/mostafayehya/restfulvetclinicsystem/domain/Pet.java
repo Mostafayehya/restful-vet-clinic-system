@@ -28,7 +28,6 @@ public class Pet {
     @Column(name = "animal_kind")
     private String animalKind;
 
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
     @Column(name = "photo_url")
     private String photoUrl;
 
