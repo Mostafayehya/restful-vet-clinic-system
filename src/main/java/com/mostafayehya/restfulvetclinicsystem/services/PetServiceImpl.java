@@ -26,7 +26,6 @@ public class PetServiceImpl implements PetService {
         this.petMapper = petMapper;
     }
 
-
     @Override
     public PetDTO createNewPet(Long ownerId, PetDTO petDTO) {
 

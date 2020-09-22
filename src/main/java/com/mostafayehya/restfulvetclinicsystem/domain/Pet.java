@@ -34,7 +34,7 @@ public class Pet {
     @Column(name = "weight")
     String weight;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     Owner owner;
 
