@@ -19,10 +19,13 @@ public class DoctorServiceImpl implements DoctorService {
     private ClinicRepository clinicRepository;
     private DoctorMapper doctorMapper;
 
-    public DoctorServiceImpl(DoctorRepository doctorRepository, DoctorMapper doctorMapper) {
+    public DoctorServiceImpl(DoctorRepository doctorRepository, ClinicRepository clinicRepository, DoctorMapper doctorMapper) {
         this.doctorRepository = doctorRepository;
+        this.clinicRepository = clinicRepository;
         this.doctorMapper = doctorMapper;
     }
+
+
 
     @Override
     public DoctorDTO createNewDoctor(Long clinicId, DoctorDTO doctorDTO) {
