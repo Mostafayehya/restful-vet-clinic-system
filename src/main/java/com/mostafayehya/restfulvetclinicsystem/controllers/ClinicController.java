@@ -29,6 +29,12 @@ public class ClinicController {
         return clinicService.getAllDoctors(clinicId);
     }
 
+    @GetMapping("/api/clinics/find")
+    @ResponseStatus(HttpStatus.OK)
+    public ClinicDTO findClinic(@RequestParam(required = false)String phone,@RequestParam(required = false)String address){
+        return clinicService.findByPhoneOrAddress(phone,address);
+    }
+
     @GetMapping({"/api/clinics/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public ClinicDTO getClinicById(@PathVariable Long id) {

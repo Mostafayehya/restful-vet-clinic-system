@@ -12,4 +12,6 @@ public interface ClinicService {
     ClinicDTO getClinicById(Long id);
 
     List<DoctorDTO> getAllDoctors(Long ClinicId);
+
+    ClinicDTO findByPhoneOrAddress(String phone, String address);
 }

@@ -44,6 +44,17 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
+    public ClinicDTO findByPhoneOrAddress(String phone, String address) {
+        Optional<Clinic> optionalClinic = clinicRepository.findByPhoneOrAddress(phone, address);
+
+        if (!optionalClinic.isPresent()) {
+            log.error("Can't find clinic with phone " + phone + " or address " + address);
+            return new ClinicDTO();
+        }
+        return clinicMapper.clinicToClinicDTO(optionalClinic.get());
+    }
+
+    @Override
     public ClinicDTO createNewClinic(ClinicDTO clinicDTO) {
         Clinic clinic = clinicMapper.clinicDTOtoClinic(clinicDTO);
         ClinicDTO saveClinicDTO = clinicMapper.clinicToClinicDTO(clinicRepository.save(clinic));
