@@ -36,10 +36,11 @@ public class Clinic {
     private String urls; // Possible URL entity
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     public void setDoctor(Doctor doctor) {
-        doctor.setClinic(this);
+       // doctor.setClinic(this);
         this.doctor = doctor;
     }
 }

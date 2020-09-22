@@ -29,7 +29,7 @@ public class Doctor {
     @Column(name = "bio")
     private String bio;
 
-    @OneToOne
+    @OneToOne(mappedBy = "doctor")
     private Clinic clinic;
 
 

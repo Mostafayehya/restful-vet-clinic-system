@@ -43,8 +43,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         Doctor convertedDoctor = doctorMapper.doctorDTOtoDoctor(doctorDTO);
 
-        // 2-way binding
-        convertedDoctor.setClinic(clinic);
+//        convertedDoctor.setClinic(clinic);
         clinic.setDoctor(convertedDoctor);
 
         Clinic savedClinic = clinicRepository.save(clinic);

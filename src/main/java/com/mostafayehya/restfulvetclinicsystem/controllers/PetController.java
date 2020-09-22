@@ -28,7 +28,7 @@ public class PetController {
         return  petService.createNewPet(ownerId,petDTO);
     }
 
-    @GetMapping({"/{id}"})
+    @GetMapping({"/api/pets/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public PetDTO getPetById(@PathVariable Long id) {
         return petService.getPetById(id);
