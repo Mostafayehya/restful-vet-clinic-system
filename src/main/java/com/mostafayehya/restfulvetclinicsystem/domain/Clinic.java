@@ -35,4 +35,11 @@ public class Clinic {
     @Column(name = "social_networks")
     private String urls; // Possible URL entity
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Doctor doctor;
+
+    public void setDoctor(Doctor doctor) {
+        doctor.setClinic(this);
+        this.doctor = doctor;
+    }
 }
