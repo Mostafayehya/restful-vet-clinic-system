@@ -25,7 +25,7 @@ public class OwnerController {
 
     @PostMapping("/api/owners")
     @ResponseStatus(HttpStatus.CREATED)
-    public OwnerDTO addOwner(@RequestBody OwnerDTO ownerDTO) {
+    public OwnerDTO createOwner(@RequestBody OwnerDTO ownerDTO) {
         return ownerService.createNewOwner(ownerDTO);
     }
 

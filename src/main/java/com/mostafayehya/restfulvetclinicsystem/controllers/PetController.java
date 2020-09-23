@@ -19,8 +19,7 @@ public class PetController {
 
     @PostMapping("/api/owners/{ownerId}/pets")
     @ResponseStatus(HttpStatus.CREATED)
-    public PetDTO addPet(@PathVariable Long ownerId,@RequestBody PetDTO petDTO) {
-
+    public PetDTO createPet(@PathVariable Long ownerId, @RequestBody PetDTO petDTO) {
         return  petService.createNewPet(ownerId,petDTO);
     }
 

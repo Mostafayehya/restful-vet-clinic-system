@@ -23,7 +23,7 @@ public class ClinicController {
 
     @PostMapping("/api/clinics")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClinicDTO addClinic(@RequestBody ClinicDTO clinicDTO) {
+    public ClinicDTO createClinic(@RequestBody ClinicDTO clinicDTO) {
         return clinicService.createNewClinic(clinicDTO);
     }
 
