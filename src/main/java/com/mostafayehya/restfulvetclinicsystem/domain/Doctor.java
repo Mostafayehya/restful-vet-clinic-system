@@ -33,5 +33,8 @@ public class Doctor {
     @JoinColumn(name = "clinic_id")
     Clinic clinic;
 
+    @OneToOne(mappedBy = "doctor")
+    Visit visit;
+
 
 }
