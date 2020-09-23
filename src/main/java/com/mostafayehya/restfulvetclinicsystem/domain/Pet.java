@@ -38,8 +38,6 @@ public class Pet {
     @JoinColumn(name = "owner_id")
     Owner owner;
 
-    @OneToOne(mappedBy = "pet")
-    Visit visit;
 
 
 }

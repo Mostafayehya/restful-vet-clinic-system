@@ -40,9 +40,6 @@ public class Clinic {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinic")
     Set<Doctor> doctors = new HashSet<>();
 
-    @OneToOne(mappedBy = "clinic")
-    Visit visit;
-
     public Clinic addDoctor(Doctor doc) {
         doc.setClinic(this);
         this.doctors.add(doc);
