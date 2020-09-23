@@ -5,7 +5,6 @@ import com.mostafayehya.restfulvetclinicsystem.api.dto.PetDTO;
 import com.mostafayehya.restfulvetclinicsystem.api.mapper.OwnerMapper;
 import com.mostafayehya.restfulvetclinicsystem.api.mapper.PetMapper;
 import com.mostafayehya.restfulvetclinicsystem.domain.Owner;
-import com.mostafayehya.restfulvetclinicsystem.domain.Owner;
 import com.mostafayehya.restfulvetclinicsystem.repositories.OwnerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

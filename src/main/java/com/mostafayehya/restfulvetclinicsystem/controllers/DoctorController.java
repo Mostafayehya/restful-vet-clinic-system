@@ -20,12 +20,6 @@ public class DoctorController {
         return doctorService.createNewDoctor(doctorDTO);
     }
 
-    @PostMapping("/api/clinics/{clinicId}/assign")
-    @ResponseStatus(HttpStatus.CREATED)
-    public DoctorDTO assignDoctorToClinic(@PathVariable Long clinicId, @RequestBody DoctorDTO doctorDTO) {
-        return doctorService.assignDoctorToClinic(clinicId, doctorDTO);
-    }
-
     @GetMapping("/api/doctors/{id}")
     @ResponseStatus(HttpStatus.OK)
     public DoctorDTO getDoctor(@PathVariable Long id) {

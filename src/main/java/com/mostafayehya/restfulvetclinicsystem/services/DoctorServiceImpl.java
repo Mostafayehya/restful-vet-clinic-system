@@ -8,8 +8,11 @@ import com.mostafayehya.restfulvetclinicsystem.repositories.ClinicRepository;
 import com.mostafayehya.restfulvetclinicsystem.repositories.DoctorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -33,6 +36,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    @Transactional
     public DoctorDTO assignDoctorToClinic(Long clinicId, DoctorDTO doctorDTO) {
 
         Optional<Clinic> optionalClinic = clinicRepository.findById(clinicId);
@@ -61,6 +65,34 @@ public class DoctorServiceImpl implements DoctorService {
         }
 
         return doctorMapper.doctorToDoctorDTO(savedDoctor.get());
+    }
+
+    @Override
+    @Transactional
+    public void deassignDoctorToClinic(Long clinicId, DoctorDTO doctorDTO) {
+
+        Optional<Clinic> optionalClinic = clinicRepository.findById(clinicId);
+
+        if (!optionalClinic.isPresent()) {
+            log.error("Clinic is not found for id " + clinicId);
+            return;
+        }
+
+        Clinic clinic = optionalClinic.get();
+
+        Doctor detachedDoctor = doctorMapper.doctorDTOtoDoctor(doctorDTO);
+        detachedDoctor.setClinic(null);
+
+        Set<Doctor> newSet = clinic.getDoctors()
+                .stream()
+                .filter(doctor -> !doctor.getId().equals(doctorDTO.getId()))
+                .collect(Collectors.toSet());
+
+        clinic.setDoctors(newSet);
+
+        clinicRepository.save(clinic);
+        doctorRepository.save(detachedDoctor);
+
     }
 
     @Override
