@@ -18,15 +18,12 @@ public class Visit {
     Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pet_id")
     Pet pet;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
     Doctor doctor;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "clinic_id")
     Clinic clinic;
 
     @Column(name = "date")
