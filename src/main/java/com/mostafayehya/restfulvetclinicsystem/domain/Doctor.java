@@ -33,6 +33,9 @@ public class Doctor {
     @JoinColumn(name = "clinic_id")
     Clinic clinic;
 
+    @OneToOne
+    Visit visit;
+
 
 
 

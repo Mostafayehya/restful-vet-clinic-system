@@ -18,15 +18,28 @@ public class Visit {
     Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    Pet pet;
+    private Pet pet;
 
     @OneToOne(cascade = CascadeType.ALL)
-    Doctor doctor;
+    private Doctor doctor;
 
     @OneToOne(cascade = CascadeType.ALL)
-    Clinic clinic;
+    private Clinic clinic;
+
 
     @Column(name = "date")
     String date;
+
+    public Visit addDoctor(Doctor doctor){
+        doctor.setVisit(this);
+        this.doctor=doctor;
+        return this;
+    }
+
+    public Visit addClinic(Clinic clinic){
+        clinic.setVisit(this);
+        this.clinic = clinic;
+        return this;
+    }
 
 }

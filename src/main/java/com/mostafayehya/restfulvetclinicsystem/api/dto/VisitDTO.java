@@ -13,11 +13,11 @@ import lombok.Setter;
 public class VisitDTO {
 
     @JsonProperty("pet")
-    private PetDTO petDTO;
+    private PetDTO pet;
     @JsonProperty("doctor")
-    private DoctorDTO doctorDTO;
+    private DoctorDTO doctor;
     @JsonProperty("clinic")
-    private ClinicDTO clinicDTO;
+    private ClinicDTO clinic;
     private String date;
 
 }
