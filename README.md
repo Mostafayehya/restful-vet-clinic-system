@@ -1,5 +1,5 @@
 # restful-vet-clinic-system
-RESTFul API for pet-Clinic-Website, EME-International task.
+RESTFul API for pet-Clinic-Website
 
 ## Base path for accessing end points
    localhost:8080
